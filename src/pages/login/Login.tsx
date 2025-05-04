@@ -7,7 +7,6 @@ import { PreRegisterModule } from "../../components/PreRegisterModule/PreRegiste
 import { useGlobalProvider } from "../../providers/globalProvider/GlobalProviderContext";
 
 export const Login = () => {
-  // NEED API CALL BEFORE LOGIN TO CHECK IF USER HAS REGISTERED BEFORE
   const { registrationStatus } = useGlobalProvider();
   const [registerModuleActive, setRegisterModuleActive] = useState(false);
 
