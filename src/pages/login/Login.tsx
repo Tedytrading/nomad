@@ -1,6 +1,6 @@
 import { LoginModule } from "../../components/loginModule/LoginModule";
 import { RegisterModule } from "../../components/RegisterModule/RegisterModule";
-import QrLogo from "../../assets/QRlogo.svg";
+import QrLogo from "../../assets/Qrlogo.svg";
 import styles from "./Login.module.scss";
 import { useState } from "react";
 import { PreRegisterModule } from "../../components/PreRegisterModule/PreRegisterModule";
