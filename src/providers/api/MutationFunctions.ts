@@ -2,6 +2,7 @@ import { gql } from "urql";
 import { client } from "./APIProvider";
 import { retrieveRawInitData } from "@telegram-apps/sdk-react";
 
+
 const initDataRaw = retrieveRawInitData();
 
 // Mutations

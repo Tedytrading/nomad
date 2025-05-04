@@ -4,12 +4,7 @@ import { DashBoard } from "./pages/dashboard/DashBoard";
 
 function App() {
   return (
-    <Router
-      future={{
-        v7_relativeSplatPath: true,
-        v7_startTransition: true,
-      }}
-    >
+    <Router>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/dashBoard" element={<DashBoard />} />

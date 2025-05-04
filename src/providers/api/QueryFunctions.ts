@@ -2,12 +2,6 @@ import {  gql } from 'urql';
 import { client } from './APIProvider';
 import { retrieveRawInitData } from '@telegram-apps/sdk-react';
 
-interface Query {
-  registrationStatus(tg_user_id: string): AuthResponse;
-  me(): Users | null;
-  meFake(tg_user_id: string): Users | null;
-}
-
 export interface AuthResponse {
   error: string | null;
   success: boolean;

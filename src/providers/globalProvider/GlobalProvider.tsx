@@ -4,16 +4,8 @@ import { isTMA } from "@telegram-apps/sdk-react";
 import { useAPI } from "../api/APIProvider";
 import { RequestHandler } from "../api/RequestHandler";
 
-const exampleUser = {
-  TgUserId: "1234422",
-  uniqRefId: "bb98675d",
-  pass: "a453232a",
-  email: "test4@mail.com",
-  uniqName: "test4",
-  code: "817b53",
-};
-
 export const GlobalProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  console.log("GlobalProvider rendered");
   if (isTMA() === false) {
     return <div>Not running in Telegram</div>;
   }
