@@ -1,0 +1,75 @@
+.loginContainer {
+  background-color: #1a1a2e;
+  color: #fff;
+  padding: 1rem; // Reduced padding to make it shorter
+  border-radius: 30px 30px 0 0; // Rounded corners only at the top
+  overflow: hidden;
+  position: fixed; // Fix it to the bottom of the screen
+  bottom: 0; // Align it to the bottom
+  left: 0; // Stretch to the left edge
+  right: 0; // Stretch to the right edge
+  height: 50vh; // Adjust height as needed
+  background-color: #1e113b;
+}
+
+.loginTitle {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.loginLabel {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.loginInput {
+  background-color: #0f0f1f;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem;
+  font-size: 1rem;
+  margin-top: 0.1rem;
+  flex: 1;
+}
+
+.loginInput::placeholder {
+  color: #aaa;
+}
+
+.passwordContainer {
+  position: relative;
+  display: flex; // Add flexbox to align items
+  align-items: center;
+}
+
+.passwordToggle {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.loginButton {
+  background-color: #00ff9d;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.loginButton:hover {
+  background-color: #00e68a;
+}

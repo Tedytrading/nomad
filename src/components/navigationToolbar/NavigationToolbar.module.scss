@@ -1,0 +1,48 @@
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1px;
+  background-color: #1a1a2e;
+  border-radius: 50px; // Rounded edges for the container
+  overflow: hidden;
+}
+
+.topUpButton,
+.withdrawButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 15px 20px; // Adjust padding for better spacing
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: white;
+  color: #2e2e4d;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  position: relative;
+  min-width: 0;
+}
+
+.topUpButton:hover,
+.withdrawButton:hover {
+  opacity: 85%;
+}
+
+.topUpButton {
+  border-right: 1px solid #444; // Divider between buttons
+}
+
+.withdrawButton {
+  border-left: 1px solid #444; // Divider between buttons
+}
+
+.topUpButton img,
+.withdrawButton img {
+  margin-left: 8px;
+  width: 16px;
+  height: 16px;
+}
