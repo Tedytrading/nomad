@@ -19,7 +19,7 @@ export const TransactionList = () => {
   };
 
   return (
-    <div className={styles.transactionList}>
+    <div className={styles.transactionListContainer}>
       <h3>Transactions</h3>
       {transactions.map((transaction, index) => (
         <div key={index} className={styles.transaction}>

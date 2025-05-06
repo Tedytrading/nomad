@@ -1,4 +1,4 @@
-.loginContainer {
+.verifyEmailContainer {
   background-color: #1a1a2e;
   color: #fff;
   padding: 1rem; // Reduced padding to make it shorter
@@ -12,25 +12,25 @@
   background-color: #1e113b;
 }
 
-.loginTitle {
+.verifyEmailTitle {
   font-size: 2rem;
   margin-bottom: 1.5rem;
 }
 
-.loginForm {
+.verifyEmailForm {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.loginLabel {
+.verifyEmailLabel {
   display: flex;
   flex-direction: column;
   text-align: left;
   font-size: 0.9rem;
 }
 
-.loginInput {
+.verifyEmailInput {
   background-color: #0f0f1f;
   color: #fff;
   border: none;
@@ -41,24 +41,11 @@
   flex: 1;
 }
 
-.loginInput::placeholder {
+.verifyEmailInput::placeholder {
   color: #aaa;
 }
 
-.passwordContainer {
-  position: relative;
-  display: flex; // Add flexbox to align items
-  align-items: center;
-}
-
-.passwordToggle {
-  position: absolute;
-  right: 10px;
-  cursor: pointer;
-  color: #aaa;
-}
-
-.loginButton {
+.primaryEmailButton {
   background-color: #00ff9d;
   color: #000;
   border: none;
@@ -70,6 +57,22 @@
   transition: background-color 0.3s ease;
 }
 
-.loginButton:hover {
-  background-color: #00e68a;
+.secondaryEmailButton {
+  background-color: #1e113b;
+  color: #00ff9d;
+  border: none;
+  border: 1px solid #00ff9d;
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.secondaryEmailButton:hover {
+  opacity: 85%;
+}
+
+.primaryEmailButton:hover {
+  opacity: 65%;
 }

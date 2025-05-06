@@ -1,15 +1,17 @@
 import { gql } from "urql";
 import { client } from "./APIProvider";
-import { retrieveRawInitData } from "@telegram-apps/sdk-react";
-
-
-const initDataRaw = retrieveRawInitData();
+import { getInitData } from "./utils/getInitData";
 
 // Mutations
 export const completeRegistration = async (email: string, uniq_name: string) => {
+  const initDataRaw = getInitData();
+  if (!initDataRaw) {
+    throw new Error("Telegram init data is unavailable.");
+  }
+
   const mutation = gql`
-    mutation CompleteRegistration {
-      completeRegistration(email: "user-email-here", uniq_name: "user-name-here") {
+    mutation CompleteRegistration($email: String!, $uniq_name: String!) {
+      completeRegistration(email: $email, uniq_name: $uniq_name) {
         success
         error
       }
@@ -27,9 +29,14 @@ export const completeRegistration = async (email: string, uniq_name: string) => 
 };
 
 export const verifyEmail = async (code: string) => {
+  const initDataRaw = getInitData();
+  if (!initDataRaw) {
+    throw new Error("Telegram init data is unavailable.");
+  }
+
   const mutation = gql`
-    mutation VerifyEmail {
-      verifyEmail(code: "code-here") {
+    mutation VerifyEmail($code: String!) {
+      verifyEmail(code: $code) {
         success
         error
       }
@@ -47,6 +54,11 @@ export const verifyEmail = async (code: string) => {
 };
 
 export const resendCode = async () => {
+  const initDataRaw = getInitData();
+  if (!initDataRaw) {
+    throw new Error("Telegram init data is unavailable.");
+  }
+
   const mutation = gql`
     mutation ResendCode {
       resendCode {

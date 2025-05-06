@@ -8,12 +8,13 @@
   bottom: 0; // Align it to the bottom
   left: 0; // Stretch to the left edge
   right: 0; // Stretch to the right edge
-  height: 100vh; // Adjust height as needed
+  height: 60vh; // Adjust height as needed
   background-color: #1e113b;
   overflow: hidden;
 }
 
 .registerTitle {
+  margin-top: 2rem;
   font-size: 2rem;
   margin-bottom: 1.5rem;
 }
@@ -51,16 +52,8 @@
   position: relative;
 }
 
-.passwordToggle {
-  position: absolute;
-  right: 10px;
-  top: 60%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  color: #aaa;
-}
-
 .termsContainer {
+  margin-top: 1rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -75,6 +68,7 @@
 }
 
 .registerButton {
+  margin-top: 1rem;
   background-color: #00ff9d;
   color: #000;
   border: none;
@@ -92,5 +86,5 @@
 
 .disabledButton {
   opacity: 0.5;
-  pointer-events: none; // Optional: Prevent interaction with the button
+  pointer-events: none;
 }

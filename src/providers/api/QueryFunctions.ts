@@ -1,6 +1,7 @@
 import {  gql } from 'urql';
 import { client } from './APIProvider';
-import { retrieveRawInitData } from '@telegram-apps/sdk-react';
+import { getInitData } from './utils/getInitData';
+
 
 export interface AuthResponse {
   error: string | null;
@@ -77,9 +78,8 @@ interface Messages {
 }
 
 
-const initDataRaw = retrieveRawInitData();
-
 export const me = async ():Promise<AuthResponse> => {
+  const initDataRaw = getInitData();
   const query = gql`
     query Me {
       me {
@@ -107,4 +107,40 @@ export const me = async ():Promise<AuthResponse> => {
     },
   }).toPromise();
   return result.data.me;
+};
+
+export const getUser = async (): Promise<any> => {
+  const initDataRaw = getInitData();
+  const query = gql`
+    query UserInfo_1 {
+      userInfo_1 {
+        error
+        info {
+          balance
+          stats {
+            total_units
+            total_users
+            units_price
+          }
+          transactions {
+            id
+            createdAt
+            token {
+              name
+              id
+            }
+          }
+        }
+      }
+    }
+  `;
+  const result = await client.query(query, {}, {
+    fetchOptions: {
+      headers: {
+        'X-Telegram-InitData': `${initDataRaw}`,
+        'Content-Type': 'application/json',
+      },
+    },
+  }).toPromise();
+  return result.data.userInfo_1;
 };

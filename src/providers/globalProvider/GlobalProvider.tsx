@@ -1,40 +1,61 @@
 import React, { useState, ReactNode, useEffect } from "react";
 import { GlobalContext, GlobalProviderContextProps } from "./GlobalProviderContext";
-import { isTMA } from "@telegram-apps/sdk-react";
 import { useAPI } from "../api/APIProvider";
 import { RequestHandler } from "../api/RequestHandler";
+import { AuthResponse } from "../api/QueryFunctions";
+
+export interface RegisterData {
+  email: string;
+  username: string;
+  termsAccepted: boolean;
+}
 
 export const GlobalProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  console.log("GlobalProvider rendered");
-  if (isTMA() === false) {
-    return <div>Not running in Telegram</div>;
-  }
-
   const { queries } = useAPI();
-  const [registrationStatus, setRegistrationStatus] = useState(false);
+  const [registrationStatus, setRegistrationStatus] = useState({
+    emailNotVerified: false,
+    registrationNotCompleted: false,
+    hasCompletedRegistration: false,
+  });
   const [loadingUser, setLoadingUser] = useState(true);
+  const [userInputInformation, setUserInputInformation] = useState<RegisterData>({
+    email: "",
+    username: "",
+    termsAccepted: false,
+  });
+  const [currentUser, setCurrentUser] = useState<AuthResponse["user"] | null>(null);
 
   useEffect(() => {
     (async () => {
-      setTimeout(() => 2000);
       const meResponse = await RequestHandler(queries.me());
-      console.log("Registration status response:", meResponse);
-
       if (meResponse) {
         switch (meResponse.error) {
           case "registration_not_completed":
-            console.log("Did this one run");
-            setRegistrationStatus(false);
+            setRegistrationStatus((prev) => ({
+              ...prev,
+              registrationNotCompleted: true,
+            }));
             break;
 
           case "email_not_verified":
-            setRegistrationStatus(false);
+            setRegistrationStatus((prev) => ({
+              ...prev,
+              emailNotVerified: true,
+            }));
             break;
 
           default:
-            setRegistrationStatus(true);
+            setRegistrationStatus({
+              emailNotVerified: true,
+              registrationNotCompleted: true,
+              hasCompletedRegistration: true,
+            });
             break;
         }
+      }
+
+      if (meResponse.success) {
+        setCurrentUser(meResponse.user);
       }
 
       setLoadingUser(false);
@@ -47,6 +68,11 @@ export const GlobalProvider: React.FC<{ children: ReactNode }> = ({ children }) 
 
   const value: GlobalProviderContextProps = {
     registrationStatus,
+    setRegistrationStatus,
+    userInputInformation,
+    setUserInputInformation,
+    currentUser,
+    setCurrentUser,
   };
 
   return <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>;

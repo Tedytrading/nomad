@@ -1,7 +1,24 @@
 import { createContext, useContext } from "react";
+import { RegisterData } from "./GlobalProvider";
+import { AuthResponse } from "../api/QueryFunctions";
 
 export interface GlobalProviderContextProps {
-  registrationStatus: boolean;
+  registrationStatus: {
+    emailNotVerified: boolean;
+    registrationNotCompleted: boolean;
+    hasCompletedRegistration: boolean;
+  };
+  setRegistrationStatus: React.Dispatch<
+    React.SetStateAction<{
+      emailNotVerified: boolean;
+      registrationNotCompleted: boolean;
+      hasCompletedRegistration: boolean;
+    }>
+  >;
+  userInputInformation: RegisterData;
+  setUserInputInformation: React.Dispatch<React.SetStateAction<RegisterData>>;
+  currentUser: AuthResponse["user"] | null;
+  setCurrentUser: React.Dispatch<React.SetStateAction<AuthResponse["user"] | null>>;
 }
 
 // Create the context with a default value
