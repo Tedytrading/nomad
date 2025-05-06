@@ -8,9 +8,14 @@ function App() {
   const { currentUser } = useGlobalProvider();
   const navigate = useNavigate();
 
+  console.log(currentUser);
   useEffect(() => {
     if (currentUser) {
+      console.log("User is logged in");
       navigate("/dashBoard");
+    } else {
+      console.log("User is not logged in");
+      navigate("/");
     }
   }, [currentUser]);
 

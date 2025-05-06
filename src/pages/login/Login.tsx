@@ -8,8 +8,10 @@ import { useAPI } from "../../providers/api/APIProvider";
 import { RequestHandler } from "../../providers/api/RequestHandler";
 import { VerifyEmailModule } from "../../components/loginModule/VerifyEmailModule";
 import { RegisterData } from "../../providers/globalProvider/GlobalProvider";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
+  const navigate = useNavigate();
   const { mutations } = useAPI();
   const [registerModuleActive, setRegisterModuleActive] = useState(false);
   const { registrationStatus, setRegistrationStatus, setUserInputInformation } = useGlobalProvider();
@@ -36,6 +38,9 @@ export const Login = () => {
 
     const confirmEmailResponse = await RequestHandler(mutations.verifyEmail(emailCode));
     console.log("Confirm email response:", confirmEmailResponse);
+    if (confirmEmailResponse.success) {
+      navigate("/dashBoard");
+    }
   };
 
   const handleOnResendCode = async () => {

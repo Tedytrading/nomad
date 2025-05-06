@@ -50,7 +50,7 @@ export const verifyEmail = async (code: string) => {
       },
     },
   }).toPromise();
-  return result.data;
+  return result.data.verifyEmail;
 };
 
 export const resendCode = async () => {
